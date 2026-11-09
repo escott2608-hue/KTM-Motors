@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KTM Systems | Enterprise Inventory Management</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ktm: {
+                            orange: '#FF6600',
+                            darkorange: '#E05500',
+                            slate: '#0F172A',
+                            card: '#1E293B',
+                            border: '#334155'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+   
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0F172A;
+            color: #F8FAFC;
+        }
+
+
+        .bg-tech-grid {
+            background-size: 40px 40px;
+            background-image:
+                linear-gradient(to right, rgba(255, 102, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 102, 0, 0.05) 1px, transparent 1px);
+        }
+
+
+        .glow-orange {
+            box-shadow: 0 0 25px rgba(255, 102, 0, 0.25);
+        }
+
+
+        .text-glow {
+            text-shadow: 0 0 12px rgba(255, 102, 0, 0.5);
+        }
+
+
+        @keyframes status-pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.95); }
+        }
+        .animate-status {
+            animation: status-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body class="bg-ktm-slate bg-tech-grid min-h-screen flex flex-col justify-between selection:bg-ktm-orange selection:text-white">
+
+
+    <!-- 1. NAVIGATION HEADER -->
+    <header class="sticky top-0 z-50 bg-ktm-slate/90 backdrop-blur-md border-b border-ktm-border/80 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="KTMmotors.html" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 bg-ktm-orange text-white font-extrabold flex items-center justify-center rounded-lg shadow-lg group-hover:bg-ktm-darkorange transition-colors">
+                    KTM
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-lg tracking-wider text-white group-hover:text-ktm-orange transition-colors">KTM SYSTEMS</span>
+                    <span class="text-xs text-slate-400 tracking-widest uppercase">Inventory Intelligence</span>
+                </div>
+            </a>
+
+
+            <!-- Desktop Navigation Links (Home, About Us & Contact, Products & Solutions) -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold">
+                <a href="KTMmotors.html" class="nav-link text-slate-300 hover:text-ktm-orange transition-colors pb-1 flex items-center space-x-2" id="nav-home">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </a>
+                <a href="about.html" class="nav-link text-slate-300 hover:text-ktm-orange transition-colors pb-1 flex items-center space-x-2" id="nav-about">
+                    <i class="fa-solid fa-users"></i>
+                    <span>About Us & Contact</span>
+                </a>
+                <a href="products.html" class="nav-link text-slate-300 hover:text-ktm-orange transition-colors pb-1 flex items-center space-x-2" id="nav-products">
+                    <i class="fa-solid fa-cubes"></i>
+                    <span>Products & Solutions</span>
+                </a>
+            </nav>
+
+
+            <!-- Action Button -->
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="about.html" class="bg-ktm-card hover:bg-slate-700 text-slate-200 border border-ktm-border text-sm px-4 py-2.5 rounded-xl font-medium transition-all duration-200 flex items-center space-x-2">
+                    <i class="fa-solid fa-envelope text-ktm-orange"></i>
+                    <span>Get in Touch</span>
+                </a>
+            </div>
+
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-ktm-orange focus:outline-none p-2 rounded-lg border border-ktm-border" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+            </button>
+        </div>
+
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-ktm-card border-b border-ktm-border px-4 pt-3 pb-6 space-y-3">
+            <a href="KTMmotors.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-ktm-orange hover:bg-slate-800">
+                <i class="fa-solid fa-house mr-2"></i>Home
+            </a>
+            <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-ktm-orange hover:bg-slate-800">
+                <i class="fa-solid fa-users mr-2"></i>About Us & Contact
+            </a>
+            <a href="products.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-ktm-orange hover:bg-slate-800">
+                <i class="fa-solid fa-cubes mr-2"></i>Products & Solutions
+            </a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- PAGE 1: HOME PAGE CONTENT -->
+                <div>
+                    <!-- HERO SECTION -->
+                    <section class="relative pt-12 pb-20 lg:pt-20 lg:pb-28 overflow-hidden">
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                                <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                                    <div class="inline-flex items-center space-x-2 bg-ktm-orange/10 border border-ktm-orange/30 px-3.5 py-1.5 rounded-full text-xs font-semibold text-ktm-orange uppercase tracking-wide">
+                                        <span class="w-2 h-2 rounded-full bg-ktm-orange animate-status"></span>
+                                        <span>Next-Gen Enterprise Architecture</span>
+                                    </div>
+                                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-none text-white">
+                                        Powering Motorcycle Manufacturing with <span class="text-ktm-orange text-glow">Real-Time Precision Inventory</span>
+                                    </h1>
+                                    <p class="text-lg sm:text-xl text-slate-300 font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                                        KTM transforms multi-facility motorcycle production across North America with automated digital tracking, real-time stock synchronizations, and intelligent reorder notifications.
+                                    </p>
+                                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                                        <a href="products.html" class="w-full sm:w-auto bg-ktm-orange hover:bg-ktm-darkorange text-white font-bold px-8 py-4 rounded-xl shadow-lg glow-orange hover:shadow-orange-500/50 transition-all duration-300 flex items-center justify-center space-x-3">
+                                            <span>Explore Catalog & Pricing</span>
+                                            <i class="fa-solid fa-arrow-right"></i>
+                                        </a>
+                                        <a href="about.html" class="w-full sm:w-auto bg-ktm-card hover:bg-slate-700 text-slate-100 border border-ktm-border font-semibold px-8 py-4 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2">
+                                            <i class="fa-solid fa-users text-slate-400"></i>
+                                            <span>About & Founders</span>
+                                        </a>
+                                    </div>
+                                </div>
+        
+        
+                                <!-- Monitoring Console Widget -->
+                                <div class="lg:col-span-5">
+                                    <div class="relative bg-ktm-card border border-ktm-border rounded-2xl p-6 shadow-2xl space-y-6">
+                                        <div class="flex items-center justify-between pb-4 border-b border-ktm-border">
+                                            <div class="flex items-center space-x-3">
+                                                <div class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></div>
+                                                <div>
+                                                    <h3 class="text-sm font-bold text-white tracking-wide uppercase">KTM Core Database Node</h3>
+                                                    <p class="text-xs text-slate-400">Cluster Status: Operational</p>
+                                                </div>
+                                            </div>
+                                            <span class="bg-emerald-950 text-emerald-400 text-xs px-2.5 py-1 rounded-md border border-emerald-800/50 font-mono">LIVE SYNC</span>
+                                        </div>
+                                        <div class="space-y-3 font-mono text-xs">
+                                            <div class="p-3 bg-slate-900/90 rounded-lg border border-ktm-border/60 flex items-start justify-between">
+                                                <div>
+                                                    <div class="flex items-center space-x-2 text-slate-300 font-semibold">
+                                                        <i class="fa-solid fa-truck-ramp-box text-ktm-orange"></i>
+                                                        <span>Facility #04 [Detroit Assembly]</span>
+                                                    </div>
+                                                    <p class="text-slate-400 text-[11px] mt-1">Inbound Shipment Logged: +250 Duke Engine Blocks</p>
+                                                </div>
+                                                <span class="text-slate-500 text-[10px]">Just now</span>
+                                            </div>
+                                            <div class="p-3 bg-slate-900/90 rounded-lg border border-ktm-border/60 flex items-start justify-between">
+                                                <div>
+                                                    <div class="flex items-center space-x-2 text-amber-400 font-semibold">
+                                                        <i class="fa-solid fa-triangle-exclamation text-amber-500"></i>
+                                                        <span>Automated Alert Triggered</span>
+                                                    </div>
+                                                    <p class="text-slate-400 text-[11px] mt-1">Material Low: #9001 Frame Assemblies below threshold (12 left)</p>
+                                                </div>
+                                                <span class="text-slate-500 text-[10px]">2m ago</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+        
+        
+                    <!-- ELEVATOR PITCH SECTION -->
+                    <section class="py-16 bg-slate-900/80 border-y border-ktm-border">
+                        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+                            <span class="text-ktm-orange font-bold text-xs uppercase tracking-widest px-3 py-1 bg-ktm-orange/10 rounded-full border border-ktm-orange/20">Operational Transformation</span>
+                            <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Eliminating Bottlenecks. Maximizing Capital Efficiency 1].</h2>
+                            <p class="text-lg text-slate-300 leading-relaxed max-w-4xl mx-auto">
+                                KTM is a leading North American motorcycle manufacturer scaling high-performance production across multi-facility networks. By replacing error-prone manual inventory spreadsheets with our centralized Database Information System, we empower teams to track parts moving in and out of every location in real time. This automated solution eliminates costly production line delays, balances reorder thresholds, and stops capital from being trapped in obsolete stock.
+                            </p>
+                        </div>
+                    </section>
+                </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 border-t border-ktm-border py-8 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 space-y-2">
+            <p>© 2026 KTM Systems Enterprise Information Systems. 300 Main Street, Room 225, Columbia, SC.</p>
+            <p>Mon – Sun: 7:00 AM – 5:00 PM EST | (803) 555-0199 | contact@ktmsystems.example.com</p>
+        </div>
+    </footer>
+
+    <script>
+        const pageFiles = {
+            home: 'KTMmotors.html',
+            about: 'about.html',
+            products: 'products.html'
+        };
+        const currentPage = Object.keys(pageFiles).find(page =>
+            window.location.pathname.endsWith('/' + pageFiles[page]) ||
+            window.location.pathname === pageFiles[page]
+        ) || 'home';
+        const activeNav = document.getElementById('nav-' + currentPage);
+        if (activeNav) {
+            activeNav.classList.remove('text-slate-300');
+            activeNav.classList.add('text-ktm-orange', 'border-b-2', 'border-ktm-orange');
+        }
+
+        const mobileMenuButton = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+        const activeMobileLink = mobileMenu.querySelector('a[href="' + pageFiles[currentPage] + '"]');
+        if (activeMobileLink) {
+            activeMobileLink.classList.remove('text-slate-300', 'hover:bg-slate-800');
+            activeMobileLink.classList.add('text-ktm-orange', 'bg-slate-900/50');
+        }
+
+    </script>
+</body>
+</html>
